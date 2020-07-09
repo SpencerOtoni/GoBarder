@@ -8,6 +8,8 @@ class FileController {
       name,
       path,
     });
+
+    return res.json(file);
   }
 }
 

@@ -13,7 +13,7 @@ class NotificationController {
     if (!checkIsProvider) {
       return res
         .status(401)
-        .send({ error: 'Only provider can load notifications' });
+        .json({ error: 'Only provider can load notifications' });
     }
 
     const notifications = await Notification.find({
@@ -22,7 +22,18 @@ class NotificationController {
       .sort({ createdAt: -1 })
       .limit(20);
 
-    res.send(notifications);
+    return res.send(notifications);
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+
+    const notification = await Notification.findByIdAndUpdate(
+      id,
+      { read: true },
+      { new: true }
+    );
+    return res.send(notification);
   }
 }
 

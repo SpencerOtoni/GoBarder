@@ -11,7 +11,7 @@ import ScheduleController from './app/controllers/ScheduleController';
 import NotificationController from './app/controllers/NotificationController';
 import AvailbleController from './app/controllers/AvailbleController';
 
-import authMiddleware from './middewares/auth';
+import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 const upload = multer(multerConfig);
